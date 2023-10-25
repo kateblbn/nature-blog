@@ -1,0 +1,30 @@
+<div class="author">
+    <div class="author__greetings">
+        <h1 class="author__heading">Nature's Blog</h1>
+        <p class="author__body">A log of natural events, natural history and nature-based philosophy
+        </p>
+        <img class="my-img" src="/img/travel.jpg" alt="Me" width="100%" >    
+    </div>
+    <section class="article">
+        <h2 class="article__heading">Latest Posts</h2>
+        <ul class="article-ul">
+            <% data.forEach(post => { %>
+                <li>
+                    <a href="/post/<%= post._id %>">
+                        <span><%= post.title %></span>
+                        <span class="article__list-date"><%= post.createdAt.toDateString() %></span>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+        <div class="pages">
+            <% if (nextPage !== null ) { %>
+                <a href="/?page=<%= nextPage %>" class="pagination">&lt; View Older Posts</a>
+
+            <% } %>
+            <% if (lastPage == null) { %>
+                <a href="/?page=<%= lastPage %>" class="pagination"> Back &gt;</a>
+            <% } %>
+        </div>
+    </section>
+</div>
